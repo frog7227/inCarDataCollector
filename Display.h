@@ -4,7 +4,7 @@
  */
 class Display{
 private:
-  
+  int dispColor;
 public:
 Display();//Constructor
 ~Display();//Destructor
