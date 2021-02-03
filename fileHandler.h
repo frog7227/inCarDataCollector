@@ -14,6 +14,7 @@ public:
   ~fileHandler();
   void appendSpeed();
   void appendFuelConsumed();
+  void appendDistance();
   void newFile();
   void closeFile();
 };

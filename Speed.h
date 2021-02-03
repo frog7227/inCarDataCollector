@@ -15,4 +15,5 @@ public:
   float getCurrSpeed();
   float getAvgSpeed();
   void resetSpeed();// clears the array
+  void recSpeed(float currSpeed);
 };

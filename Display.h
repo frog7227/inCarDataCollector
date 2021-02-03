@@ -4,13 +4,12 @@
  */
 class Display{
 private:
-  int dispColor;
 public:
 Display();//Constructor
 ~Display();//Destructor
 void updateScreen();
 void updateSpeed(float currSpeed);
 void updateAvgSpeed(float AvgSpeed);
-void dispWarning();
+void dispWarning(String warning);
 void clearWarning();
 };

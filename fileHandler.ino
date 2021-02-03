@@ -13,11 +13,15 @@
   void fileHandler::appendFuelConsumed(){
     return;
   }
+
+  void fileHandler::appendDistance(){
   
+  }
+
   void fileHandler::newFile(){
     return;
   }
-  
+    
   void fileHandler::closeFile(){
     return;
   }

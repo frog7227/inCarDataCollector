@@ -34,3 +34,7 @@ void Speed::averageSpeeds(){
   pastSpeeds[11]=sum;
   return;
 }
+void Speed::recSpeed(float currSpeed){
+pastSpeeds[currPos]=currSpeed;
+return;
+}
