@@ -3,6 +3,9 @@
  */
 Speed::Speed(){
   currPos=0;
+
+
+  
   return;
 }
 
@@ -10,6 +13,12 @@ Speed::~Speed(){
   resetSpeed();
 return;
 }
+
+void Speed::updateSpeed(){
+//pcnt_unit_config(PCNT_EVT_H_LIM);
+  
+}
+
 
 float Speed::getCurrSpeed(){
 return pastSpeeds[currPos];    

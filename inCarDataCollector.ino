@@ -16,4 +16,12 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
 
+
+// Take all measurements
+
+//wait some amount of time
+
+//update screen, and save everything else to the sd card
+
+
 }
