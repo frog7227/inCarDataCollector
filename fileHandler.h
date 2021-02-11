@@ -1,4 +1,6 @@
 #pragma once
+#include "FS.h"
+#include "SD_MMC.h"
 /**
  * Header for the file handler code
  * 
@@ -8,6 +10,9 @@
 
 private:
   String fileName;
+  String filePath;
+  String fileExt;
+  File file;
   
 public:
   fileHandler();
