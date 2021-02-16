@@ -3,8 +3,8 @@
  */
 Speed::Speed(){
   currPos=0;
-
-
+  accumulatedDistance = 0;// km
+  distancePerPulse = 0.4;//m
   
   return;
 }
@@ -15,10 +15,11 @@ return;
 }
 
 void Speed::updateSpeed(){
+  unsigned int pulses = 0;
 //pcnt_unit_config(PCNT_EVT_H_LIM);
-  
-}
 
+  accumulatedDistance += pulses*distancePerPulse/1000;// /1000 for meters to km  conversion
+}
 
 float Speed::getCurrSpeed(){
 return pastSpeeds[currPos];    
@@ -46,4 +47,9 @@ void Speed::averageSpeeds(){
 void Speed::recSpeed(float currSpeed){
 pastSpeeds[currPos]=currSpeed;
 return;
+}
+
+
+double Speed::getTravelledDistance(){// returns the total travelled distance in km
+  return accumulatedDistance;
 }

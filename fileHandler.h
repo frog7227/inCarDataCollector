@@ -13,13 +13,11 @@ private:
   String filePath;
   String fileExt;
   File file;
+  double currSpeed;
+  unsigned long startTime;
   
 public:
   fileHandler();
   ~fileHandler();
-  void appendSpeed();
-  void appendFuelConsumed();
-  void appendDistance();
-  void newFile();
-  void closeFile();
+  void writeLine(double currSpeed,double currFuelFlow,double currDistanceTravelled);
 };
