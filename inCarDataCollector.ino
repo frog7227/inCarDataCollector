@@ -13,9 +13,9 @@
 void setup() {
   // put your setup code here, to run once:
   Display Dp = Display();
-  Speed Sp = Speed();
-  fileHandler Fh = fileHandler();
-  fuelReading Fr = fuelReading();
+  Speed SpeedReader = Speed();
+  fileHandler FileHandler = fileHandler();
+  fuelReading FuelReader = fuelReading();
 }
 
 void loop() {
