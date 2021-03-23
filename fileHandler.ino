@@ -10,8 +10,8 @@
     SD_MMC.begin();// start the sd card interface
     int i = 1;
     while(file){// find the first available file, not done with a for loop as the i value must be retained to create the file
-      ++i;
-    file = SD_MMC.open((filePath +fileName + String(i) + fileExt).c_str(),FILE_READ);
+        ++i;
+        file = SD_MMC.open((filePath +fileName + String(i) + fileExt).c_str(),FILE_READ);
     }
     file = SD_MMC.open((filePath +fileName + String(i) + fileExt).c_str(),FILE_WRITE);// opening the latest number and
     file.print("Time (seconds),Speed (MPH), fuel Flow (ml/min),Distance Travelled (mi)");
