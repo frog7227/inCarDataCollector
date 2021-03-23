@@ -1,4 +1,4 @@
-#include <SparkFunSerialGraphicLCD.h>//inculde the Serial Graphic LCD library
+
 
 #define maxX 59 // used for the display coordinates
 #define maxY 127
@@ -9,7 +9,6 @@
  */
 Display::Display(){
 
-  Serial.begin(9600);
   return;
 }
 Display::~Display(){
