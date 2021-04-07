@@ -16,9 +16,12 @@
 void setup() {
   // put your setup code here, to run once:
   disp.begin();
+  initializePulseCounter();
+  setFilter(90);
   Speed SpeedReader = Speed();
   fileHandler FileHandler = fileHandler();
   fuelReading FuelReader = fuelReading();
+  
 }
 
 void loop() {
