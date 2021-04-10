@@ -1,11 +1,11 @@
 #include "driver/pcnt.h"                                  // this is the hardware interface library we need to set it up
 /*
- * These functions should be encapsulated in the speed function, but like the display,
- * the hardware components cannot be encapsulated, so they are in their own files, NOT to be used
- * by other classes or methods outside of their respective parts.
- * 
- * 
- */
+   These functions should be encapsulated in the speed function, but like the display,
+   the hardware components cannot be encapsulated, so they are in their own files, NOT to be used
+   by other classes or methods outside of their respective parts.
+
+
+*/
 #define PCNT_FREQ_UNIT      PCNT_UNIT_0                   // set the pulse counter unit to 0 (the io mux needs this)
 #define PCNT_H_LIM_VAL      10000                        // limit to 10k pulses
 #define PCNT_INPUT_SIG_IO   4                             // Pulse Input GPIO 4 
@@ -24,15 +24,15 @@ void IRAM_ATTR overflowcounter(void *arg)                // Counter overflow int
 }
 
 //------------------------------------------------------------
-void initializePulseCounter(){                               // initialize everything so that we can use the pulse counter
-  
+void initializePulseCounter() {                              // initialize everything so that we can use the pulse counter
+
   pcnt_config_t pcntFreqConfig = { };                        // create an instance of the pulse counter
   pcntFreqConfig.pulse_gpio_num = PCNT_INPUT_SIG_IO;         // connect it to the pin
   pcntFreqConfig.neg_mode = PCNT_COUNT_INC;                  // increase on falling edge
   pcntFreqConfig.counter_h_lim = PCNT_H_LIM_VAL;             // limit the max count to PCNT_H_LIM_VAL (currently 10000)
   pcntFreqConfig.unit = PCNT_FREQ_UNIT;                      // set it to pulse counter 0
   pcntFreqConfig.channel = PCNT_CHANNEL_0;                   // Channel 0 of unit 0 of the hardware pulse counter
-  pcnt_unit_config(&pcntFreqConfig);                         // put the pcntFreqConfig into the appropriate registers 
+  pcnt_unit_config(&pcntFreqConfig);                         // put the pcntFreqConfig into the appropriate registers
 
   pcnt_counter_pause(PCNT_FREQ_UNIT);                        // pause the counter
   pcnt_counter_clear(PCNT_FREQ_UNIT);                        // clear the counter
@@ -43,15 +43,15 @@ void initializePulseCounter(){                               // initialize every
   //pcnt_counter_resume(PCNT_FREQ_UNIT);                       // resume the pulse counter, as we paused it to clear it
 }
 
-void startCounting(){// start the counter
+void startCounting() { // start the counter
   pcnt_counter_resume(PCNT_FREQ_UNIT);
 }
 
-void stopCounting(){// pause the counter
+void stopCounting() { // pause the counter
   pcnt_counter_pause(PCNT_FREQ_UNIT);
 }
 
-int16_t getCounterValue(){// get the value of the counter
+int16_t getCounterValue() { // get the value of the counter
   int16_t localCounter = 0;                               // make a local counter value
   pcnt_get_counter_value(PCNT_FREQ_UNIT, &localCounter);
   counterOverflow = 0;                                     // reset the overflow counter
@@ -60,10 +60,10 @@ int16_t getCounterValue(){// get the value of the counter
 }
 
 void setFilter(uint16_t value) {
-  if(value==0) {
-    pcnt_filter_disable(PCNT_FREQ_UNIT);  
-  } else if(value < 1024){
+  if (value == 0) {
+    pcnt_filter_disable(PCNT_FREQ_UNIT);
+  } else if (value < 1024) {
     pcnt_set_filter_value(PCNT_FREQ_UNIT, value);
-    pcnt_filter_enable(PCNT_FREQ_UNIT); 
-}
+    pcnt_filter_enable(PCNT_FREQ_UNIT);
+  }
 }
