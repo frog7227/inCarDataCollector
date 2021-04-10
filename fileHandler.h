@@ -18,6 +18,8 @@ private:
   
 public:
   fileHandler();
+  void begin();
+  void end();
   ~fileHandler();
   void writeLine(double currSpeed,double currFuelFlow,double currDistanceTravelled);
 };
