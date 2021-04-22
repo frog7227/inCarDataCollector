@@ -8,7 +8,6 @@ class fuelReading {
     // values used to aquire and compute the data
     const double stochiometricRatio = 18.75; //:1
     const double diameterOfIntake = 2.54; //CM
-    const double VrefVoltage = 1.1;
 
 
 

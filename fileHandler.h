@@ -1,6 +1,6 @@
 #pragma once
 #include "FS.h"
-#include "SD_MMC.h"
+#include "SD.h"
 /**
    Header for the file handler code
 
@@ -12,6 +12,7 @@ class fileHandler {
     String fileName;
     String filePath;
     String fileExt;
+    String currFile;
     File file;
     double currSpeed;
     unsigned long startTime;

@@ -19,6 +19,4 @@ class Speed {
     float getAvgSpeed();
     double getTravelledDistance();
     void resetSpeed();// clears the array
-
-
 };

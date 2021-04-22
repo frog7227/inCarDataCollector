@@ -20,6 +20,7 @@ void warmUpMessage() {
 
     disp.println("TimeRemaining: ");
     disp.setTextSize(11);// print "PLEASE WAIT"
+    
     if (i < 10) disp.print("0"); // print 0 for the countdown if the number is single digit so 09, 08, etc.
     disp.println(i);
     delay(1000);
@@ -44,9 +45,10 @@ void updateScreen(float avgSpeed, float currSpeed) {
   if (currSpeed > 99) currSpeed = 99;
   disp.setCursor(0, 0);
   disp.setTextSize(10);// print the average speed with 1 decimal place
-  if (avgSpeed < 10) disp.print("0");
-  disp.println(avgSpeed, 1);
-
+  if(!isnan(avgSpeed)){
+    if (avgSpeed < 10) disp.print("0");
+    disp.println(avgSpeed, 1);
+  }else disp.println("00.0");
   disp.setCursor(150, 75); // print the "Average" text
   disp.setTextSize(2);
   disp.println("Average");
@@ -54,8 +56,10 @@ void updateScreen(float avgSpeed, float currSpeed) {
 
   disp.setTextSize(10);// print the current speed
   disp.setCursor(0, 80);
+  if(!isnan(currSpeed)){
   if (currSpeed < 10) disp.print("0");
   disp.println(floor(currSpeed), 0);
+  }else disp.println("00");
 
   disp.setCursor(150, 130); // print the "Current" text
   disp.setTextSize(2);
