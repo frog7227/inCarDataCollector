@@ -3,6 +3,7 @@
 #define adc_max (double) 4096
 #define refVoltage 3.3
 #define zeroAirSpeed (double) 1.3096// V
+#define offsetCorrection (double) 0.12
 #define crossSectionAreaIntake 1.005 // cm^2
 fuelReading::fuelReading() {
   analogReadResolution(12);
@@ -17,8 +18,8 @@ double fuelReading::getCurrentFuelFlow() {
 
   int adc_reading_air = analogRead(33);
   int adc_reading_temp = analogRead(35);
-  double adcVoltage_air = ((double)adc_reading_air) / adc_max * refVoltage;
-  double adcVoltage_temp = ((double)adc_reading_temp) / adc_max * refVoltage;
+  double adcVoltage_air = ((double)adc_reading_air) / adc_max * refVoltage - offsetCorrection;
+  double adcVoltage_temp = ((double)adc_reading_temp) / adc_max * refVoltage - offsetCorrection;
   double tempC = (adcVoltage_temp - 0.4) / 0.01953;
   //double windSPeed = (((Volts – ZeroWind_V) / (3.038517 * (Temp_C ^ 0.115157 ))) / 0.087288 ) ^ 3.009364;
   double windSpeed = pow(((adcVoltage_air-zeroAirSpeed)/(3.038517*pow(tempC,0.115157))/0.087288),3.009364);
