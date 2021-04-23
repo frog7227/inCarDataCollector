@@ -1,3 +1,4 @@
+#include <driver/gpio.h>
 #include "driver/pcnt.h"                                  // this is the hardware interface library we need to set it up
 /*
    These functions should be encapsulated in the speed function, but like the display,
@@ -8,7 +9,7 @@
 */
 #define PCNT_FREQ_UNIT      PCNT_UNIT_0                   // set the pulse counter unit to 0 (the io mux needs this)
 #define PCNT_H_LIM_VAL      10000                        // limit to 10k pulses
-#define PCNT_INPUT_SIG_IO   4                             // Pulse Input GPIO 4 
+#define PCNT_INPUT_SIG_IO   4                             // Pulse Input on GPIO 4 
 
 int counterOverflow;                                     // overflow counter
 
@@ -16,7 +17,7 @@ pcnt_isr_handle_t user_isr_handle = NULL;                 // interrupt handler
 hw_timer_t * timer = NULL;                                // make the timer
 
 //------------------------------------------------------------------------------------
-void IRAM_ATTR overflowcounter(void *arg)                // Counter overflow interrupt function
+void IRAM_ATTR overflowcounter(void *arg)                // Counter overflow interrupt function,the value is ignored but is required to exist.
 {
   counterOverflow = counterOverflow + 1;                // add to the overflow counter, indicating an overflow occured
   PCNT.int_clr.val = BIT(PCNT_FREQ_UNIT);                 // clear the overflow flag

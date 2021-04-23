@@ -58,7 +58,7 @@ void updateScreen(float avgSpeed, float currSpeed) {
   disp.setCursor(0, 80);
   if(!isnan(currSpeed)){
   if (currSpeed < 10) disp.print("0");
-  disp.println(floor(currSpeed), 0);
+  disp.println(round(currSpeed), 0);
   }else disp.println("00");
 
   disp.setCursor(150, 130); // print the "Current" text
