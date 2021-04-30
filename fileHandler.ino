@@ -16,7 +16,7 @@ void fileHandler::begin() {
     currFile = filePath + fileName + String(i) + fileExt;
     ++i;
   }while(SD.exists(currFile));
-  appendFile(SD,path.c_str(),"Time(s),Speed (Mi),Fuel Flow (mL/Hr),Distance Travelled (Mi)\r\n");
+  appendFile(SD,path.c_str(),"Time(s),Speed (Mi),Fuel Flow (mL/Hr),Distance Travelled (Mi) \r\n");
 
 }
 void fileHandler::end() {
@@ -28,5 +28,5 @@ fileHandler::~fileHandler() {
 
 
 void fileHandler::writeLine(double currSpeed, double currFuelFlow, double currDistanceTravelled) {
-  appendFile(SD,currFile.c_str(),(String((int) (millis() - startTime) / 1000) + ',' + String(currSpeed / 1.609) + ',' + String(currFuelFlow) + ',' + String(currDistanceTravelled / 1.609)+ "\r\n").c_str());
+  appendFile(SD,currFile.c_str(),(String((int) (millis() - startTime) / 1000) + ',' + String(currSpeed) + ',' + String(currFuelFlow) + ',' + String(currDistanceTravelled / 1.609)+ "\r\n").c_str());
 }
